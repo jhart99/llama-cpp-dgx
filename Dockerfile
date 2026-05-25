@@ -29,7 +29,7 @@ RUN if [ "${CUDA_DOCKER_ARCH}" != "default" ]; then \
                    -DGGML_NATIVE=OFF -DLLAMA_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release \
                    -DCMAKE_EXE_LINKER_FLAGS=-Wl,--allow-shlib-undefined \
                    -DGGML_CPU_ALL_VARIANTS=OFF  -DGGML_BACKEND_DL=OFF . && \
-    cmake --build build --target llama-server llama-cli llama-quantize llama-dflash llama-dflash-server -j8
+    cmake --build build --target llama-server llama-quantize llama-cli -j8
 
 RUN mkdir -p /app/lib && \
     find build -name "*.so*" -exec cp -P {} /app/lib \;
