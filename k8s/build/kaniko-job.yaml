@@ -11,7 +11,7 @@ spec:
         image: gcr.io/kaniko-project/executor:latest
         args:
         - "--dockerfile=Dockerfile"
-        - "--context=https://github.com/jhart99/llama-cpp-dgx.git"
+        - "--context=git://github.com/jhart99/llama-cpp-dgx.git"
         - "--destination=ghcr.io/jhart99/llama-cpp-dgx:latest"
         - "--target=server"
         - "--cache=true"

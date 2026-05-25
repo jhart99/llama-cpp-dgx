@@ -16,9 +16,11 @@ RUN apt-get update && \
 
 ENV CC=gcc-14 CXX=g++-14 CUDAHOSTCXX=g++-14
 
-WORKDIR /app
+WORKDIR /
 
-COPY . .
+RUN git clone --depth 1 --branch b9315 https://github.com/ggml-org/llama.cpp.git
+
+WORKDIR /llama.cpp
 
 RUN if [ "${CUDA_DOCKER_ARCH}" != "default" ]; then \
     export CMAKE_ARGS="-DCMAKE_CUDA_ARCHITECTURES=${CUDA_DOCKER_ARCH}"; \
